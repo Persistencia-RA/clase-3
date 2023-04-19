@@ -2,7 +2,8 @@ const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('prueba', 'root', 'root', {
   host: 'localhost',
-  dialect: 'mariadb' /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
+  dialect: 'mariadb',
+  port: 3310  /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
 });
 
 sequelize
