@@ -4,7 +4,7 @@ services:
     image: mariadb:latest
     restart: always
     environment:
-      MYSQL_DATABASE: prueba
+      MYSQL_DATABASE: persistencia 
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
