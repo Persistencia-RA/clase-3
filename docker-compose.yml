@@ -1,16 +1,17 @@
-version: '3.9'
+version: "3.9"
 services:
-  db:
-    image: mariadb:latest
-    restart: always
-    environment:
-      MYSQL_DATABASE: persistencia 
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "3310:3306"
-    volumes:
-      - db_data:/var/lib/mysql
+    db:
+        image: mariadb:latest
+        restart: always
+        environment:
+            MYSQL_DATABASE: prueba
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: root
+
+        ports:
+            - "3310:3306"
+        volumes:
+            - db_data:/var/lib/mysql
 volumes:
-  db_data:
+    db_data:

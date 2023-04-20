@@ -15,8 +15,8 @@ sequelize
         console.error("Unable to connect to the database:", err);
     });
 
-class User extends Sequelize.Model {}
-User.init(
+class Users extends Sequelize.Model {}
+Users.init(
     {
         firstName: Sequelize.STRING,
         lastName: Sequelize.STRING,
@@ -24,15 +24,26 @@ User.init(
     { sequelize, modelName: "users" }
 );
 
-/* crea usuario*/
 sequelize
     .sync()
     .then(() =>
-        User.create({
+        Users.create({
             firstName: "Pedro",
             lastName: "Rodriguez",
         })
     )
     .then((jane) => {
         console.log(jane.toJSON());
-    });
+    })
+    .then(() =>
+        Users.update(
+            { firstName: "Juan" },
+            {
+                where: {
+                    lastName: "Rodriguez",
+                },
+            }
+        ).then(() => {
+            console.log("Done");
+        })
+    );
