@@ -1,10 +1,10 @@
-version: '3.9'
+version: "3.9"
 services:
   db:
     image: mariadb:latest
     restart: always
     environment:
-      MYSQL_DATABASE: persistencia 
+      MYSQL_DATABASE: persistencia
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
