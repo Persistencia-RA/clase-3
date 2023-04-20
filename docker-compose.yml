@@ -1,7 +1,7 @@
-version: "3.9"
+version: " 3.9 "
 services:
   db:
-    image: mariadb:latest
+    image: mariadb:10.7.8-focal
     restart: always
     environment:
       MYSQL_DATABASE: persistencia
