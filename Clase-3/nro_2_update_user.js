@@ -1,18 +1,18 @@
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize("prueba", "root", "root", {
-  host: "localhost",
-  dialect: "mariadb",
+const sequelize = new Sequelize('prueba', 'root', 'root', {
+  host: 'localhost',
+  dialect: 'mariadb',
   port: 3310 /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */,
 });
 
 sequelize
   .authenticate()
   .then(() => {
-    console.log("Connection has been established successfully.");
+    console.log('Connection has been established successfully.');
   })
   .catch((err) => {
-    console.error("Unable to connect to the database:", err);
+    console.error('Unable to connect to the database:', err);
   });
 
 const Model = Sequelize.Model;
@@ -29,18 +29,18 @@ User.init(
   },
   {
     sequelize,
-    modelName: "user",
-  }
+    modelName: 'user',
+  },
 );
 
 // actualiza registro
 User.update(
-  { firstName: "Juan" },
+  { firstName: 'Juan' },
   {
     where: {
-      lastName: "Rodriguez",
+      lastName: 'Rodriguez',
     },
-  }
+  },
 ).then(() => {
-  console.log("Done");
+  console.log('Done');
 });
