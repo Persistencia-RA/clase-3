@@ -27,20 +27,19 @@ Users.init(
 sequelize
   .sync()
   .then(() =>
-    Users.create({
-      firstName: 'Pedro',
-      lastName: 'Rodriguez',
-    }),
+    insertar("Marcos","Estebanez"),
   )
   .then((jane) => {
     console.log(jane.toJSON());
   })
   .then(() =>
-    Users.destroy({
-      where: {
-        id: 5,
-      },
-    }).then(() => {
+    eliminar(6)
+    .then(() => {
       console.log('Elimine Registro');
     }),
   );
+
+
+
+  const insertar = (nombre, apellido) => Users.create({      firstName: nombre,      lastName: apellido,    })
+  const eliminar = (idAEliminar) => Users.destroy({    where: {      id: idAEliminar,    },  })

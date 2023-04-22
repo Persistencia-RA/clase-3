@@ -27,47 +27,32 @@ Users.init(
 sequelize
   .sync()
   .then(() =>
-    Users.create({
-      firstName: 'Dario',
-      lastName: 'Lopez',
-    }),
+    insertar("Carlos","Riquelme"),
   )
   .then((jane) => {
     console.log(jane.toJSON());
   })
   .then(() =>
-    Users.update(
-      { lastName: 'Flores' },
-      {
-        where: {
-          id: 1,
-        },
-      },
-    ).then(() => {
+    actualizar("Lady",3)
+    .then(() => {
       console.log('Done');
     }),
   )
   .then(() =>
-    Users.update(
-      { lastName: 'Pereyra' },
-      {
-        where: {
-          id: 4,
-        },
-      },
-    ).then(() => {
+    actualizar("Diana",4)
+    .then(() => {
       console.log('Done');
     }),
   )
   .then(() =>
-    Users.update(
-      { lastName: 'Gonsalez' },
-      {
-        where: {
-          id: 3,
-        },
-      },
-    ).then(() => {
+    actualizar("Reina",8)
+    .then(() => {
       console.log('Done');
     }),
   );
+
+
+
+  
+const insertar = (nombre, apellido) => Users.create({      firstName: nombre,      lastName: apellido,    })
+const actualizar = (nombreACambiar, idACambiar) => Users.update(  { firstName: nombreACambiar },  {    where: {      id: idACambiar,    },  },)
