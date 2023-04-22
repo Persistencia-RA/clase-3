@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 
 const sequelize = new Sequelize('persistencia', 'root', 'root', {
   host: 'localhost',
@@ -26,20 +26,16 @@ Users.init(
 
 sequelize
   .sync()
-  .then(() =>
-    insertar("Marcos","Estebanez"),
-  )
+  .then(() => insertar('Marcos', 'Estebanez'))
   .then((jane) => {
     console.log(jane.toJSON());
   })
   .then(() =>
-    eliminar(6)
-    .then(() => {
+    eliminar(6).then(() => {
       console.log('Elimine Registro');
     }),
   );
 
-
-
-  const insertar = (nombre, apellido) => Users.create({      firstName: nombre,      lastName: apellido,    })
-  const eliminar = (idAEliminar) => Users.destroy({    where: {      id: idAEliminar,    },  })
+const insertar = (nombre, apellido) =>
+  Users.create({ firstName: nombre, lastName: apellido });
+const eliminar = (idAEliminar) => Users.destroy({ where: { id: idAEliminar } });
