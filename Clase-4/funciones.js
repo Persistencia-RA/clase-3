@@ -18,3 +18,11 @@ export function actualizarNombrePorApellido(usuario, nombreNuevo, apellido) {
     { where: { lastName: apellido } },
   );
 }
+
+export function eliminarPorId(usuario, idNumero) {
+  return usuario.destroy({
+    where: {
+      id: idNumero,
+    },
+  });
+}

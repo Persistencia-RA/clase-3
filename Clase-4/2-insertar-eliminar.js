@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import { crearUsuario } from './funciones.js';
+import { crearUsuario, eliminarPorId } from './funciones.js';
 
 const sequelize = new Sequelize('persistencia', 'root', 'root', {
   host: 'localhost',
@@ -29,12 +29,5 @@ sequelize
   .sync()
   .then(() => crearUsuario(Users, 'Pedro', 'Rodriguez'))
   .then((usuario) => console.log(usuario.toJSON()))
-  .then(() =>
-    Users.destroy({
-      where: {
-        id: 5,
-      },
-    }).then(() => {
-      console.log('Elimine Registro');
-    }),
-  );
+  .then(eliminarPorId(Users, 8))
+  .then(console.log('Elimine Registro'));
