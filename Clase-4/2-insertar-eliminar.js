@@ -29,5 +29,5 @@ sequelize
   .sync()
   .then(() => crearUsuario(Users, 'Pedro', 'Rodriguez'))
   .then((usuario) => console.log(usuario.toJSON()))
-  .then(eliminarPorId(Users, 8))
+  .then(eliminarPorId(Users, 3))
   .then(console.log('Elimine Registro'));

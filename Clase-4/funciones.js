@@ -21,8 +21,6 @@ export function actualizarNombrePorApellido(usuario, nombreNuevo, apellido) {
 
 export function eliminarPorId(usuario, idNumero) {
   return usuario.destroy({
-    where: {
-      id: idNumero,
-    },
+    where: { id: idNumero },
   });
 }
