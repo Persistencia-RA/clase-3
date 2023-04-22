@@ -1,4 +1,5 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
+import { crearUsuario, actualizarNombrePorApellido } from './funciones.js';
 
 const sequelize = new Sequelize('persistencia', 'root', 'root', {
   host: 'localhost',
@@ -26,19 +27,10 @@ Users.init(
 
 sequelize
   .sync()
-  .then(() =>
-    insertar("Clara","Flores"),)
-  .then((jane) => {
-    console.log(jane.toJSON());
-  })
-  .then(() =>
-    actualizar("Pepita","Flores")  
-    .then(() => {
+  .then(() => crearUsuario(Users, 'Pedro', 'Rodriguez'))
+  .then((usuario) => console.log(usuario.toJSON()))
+  .then(
+    actualizarNombrePorApellido(Users, 'Jose', 'Rodriguez').then(() => {
       console.log('Done');
     }),
   );
-
-
-
-const insertar = (nombre, apellido) => Users.create({      firstName: nombre,      lastName: apellido,    })
-const actualizar = (nombreACambiar, apellido) => Users.update(  { firstName: nombreACambiar },  {    where: {      lastName: apellido,    },  },)
