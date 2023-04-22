@@ -1,4 +1,5 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
+import { actualizarNombrePorId, crearUsuario } from './funciones.js';
 
 const sequelize = new Sequelize('persistencia', 'root', 'root', {
   host: 'localhost',
@@ -26,48 +27,22 @@ Users.init(
 
 sequelize
   .sync()
-  .then(() =>
-    Users.create({
-      firstName: 'Dario',
-      lastName: 'Lopez',
-    }),
-  )
-  .then((jane) => {
-    console.log(jane.toJSON());
+  .then(() => crearUsuario(Users, 'Dario', 'Lopez'))
+  .then((usuario) => {
+    console.log(usuario.toJSON());
   })
-  .then(() =>
-    Users.update(
-      { lastName: 'Flores' },
-      {
-        where: {
-          id: 1,
-        },
-      },
-    ).then(() => {
+  .then(
+    actualizarNombrePorId(Users, 'Florencia', 1).then(() => {
       console.log('Done');
     }),
   )
-  .then(() =>
-    Users.update(
-      { lastName: 'Pereyra' },
-      {
-        where: {
-          id: 4,
-        },
-      },
-    ).then(() => {
+  .then(
+    actualizarNombrePorId(Users, 'Gabriel', 4).then(() => {
       console.log('Done');
     }),
   )
-  .then(() =>
-    Users.update(
-      { lastName: 'Gonsalez' },
-      {
-        where: {
-          id: 3,
-        },
-      },
-    ).then(() => {
+  .then(
+    actualizarNombrePorId(Users, 'Sofia', 3).then(() => {
       console.log('Done');
     }),
   );
